@@ -1,0 +1,30 @@
+#article
+  .primary1
+    .primary-menu
+      %ul
+        %li= link_to "Edit this link", view_img_path
+        %li= link_to "More options", options_path
+        %li.current= link_to "Buyer receipt", receipt_path
+      .receipt-bg
+        .receipt
+        .receipt2
+          %h1= "Congratulations"
+          %p= "Tom Tailor appreciates your support"
+          .product-inf
+            .product-name= "Lorem ipsum is a simply dummy text of the printing"
+            .product-price= "$100"
+        .receipt3
+        .cleaner
+        %hr
+        .file-info
+          .extension= raw("They'll get <em>a JPG</em>")
+          .f-info= raw("SIZE<br><em>38.4kb</em>")
+          .f-info= raw("REZOLUTION<br><em>512 x 364 px</em>")
+        .f-save
+          %input{:type => :checkbox, :value => 'Email'}
+          =  'Purchases enabled'
+        %input.submit-btn.settingsbtn{:type => "submit", :value => 'Save Changes', :style => 'margin: 30px 0 0 20px;'}
+          .cleaner
+  .secondary
+    = render :partial => 'links/right_sidebar'
+  .cleaner

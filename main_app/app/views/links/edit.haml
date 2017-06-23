@@ -1,0 +1,39 @@
+#article
+  .primary1
+    -if notice
+      %center
+        %p.notice.error
+          -notice.each do |err|
+            =err
+            %br
+    .primary-menu
+      %ul
+        %li.current= link_to "Edit this link", view_img_path      
+        -# %li= link_to "More options", options_path
+        -# %li= link_to "Buyer receipt", receipt_path        
+      -if @link.get_ext_type == :image  
+        .imagebg= image_tag("/data/#{@link.upload_path}")
+      -elsif @link.get_ext_type == :audio
+        .imagebg= image_tag("audio_preview.png")
+      -else      
+        .imagebg= image_tag("/data/preview/#{@link.preview_file_path}")
+      =form_tag link_path, :method => :put do
+        %p
+          %input.title-f{:type => :text, :value => @link.name, :name => 'link_name', :size => 40}
+          %input.price-f{:type => :text, :value => @link.price.to_i, :name => 'link_price', :size => 40}
+        %p
+          %textarea.textarea-f{:name => 'link_description', :cols => 40, :rows => 5}
+            =@link.description
+        .file-info
+          .extension= raw("They'll get <em>a #{@link.get_ext_name.upcase}</em>")
+          .f-info= raw("SIZE<br><em>#{@link.display_file_size}kb</em>")
+          -if @link.get_ext_type == :image && !@link.resolution[:width].nil? 
+            .f-info= raw("RESOLUTION<br><em>#{@link.resolution[:width]} x #{@link.resolution[:height]} px</em>")
+        .f-save
+          %input{:type => :checkbox, :name => "link_active", :checked => @link.active}
+          = 'Purchases enabled'
+        %input.submit-btn.settingsbtn{:type => "submit", :value => 'Save Changes', :style => 'margin: 30px 0 0 20px;'}
+    .cleaner
+  .secondary
+    = render :partial => 'links/right_sidebar'
+  .cleaner

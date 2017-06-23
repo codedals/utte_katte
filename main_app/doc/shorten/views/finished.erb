@@ -1,0 +1,13 @@
+<h1><a href="<%= url.short_url %>"><%= url.short_url %></a></h1>
+
+<% require 'uri' %>
+<p><a href="https://twitter.com/share" class="twitter-share-button" data-url="<%= url.short_url %>" data-count="none">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script></p>
+
+
+<p>Redirects to <a href="<%= url.url %>"><%= url.url %></a></p>
+
+<% if defined?(image) then %>
+	<p>Check image embedding below:</p>
+	<p><img src="<%= url.url %>" /></p>
+<% end %>

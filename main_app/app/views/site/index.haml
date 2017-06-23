@@ -1,0 +1,43 @@
+%h3.title_page= "Share and sell the stuff you make directly to your followers"
+- if alert
+  %center
+    %p.notice.error
+      =alert
+= image_tag('image.png')
+
+.selling
+  %h2= 'Sign up for DejiSute'
+  -if notice
+    %p.notice.error
+      -notice.each do |err|
+        =err
+  %ul
+    %li= "Connect with"
+    %li= link_to image_tag('facebook.png'), "/auth/facebook"
+    %li= link_to image_tag('twitter.png'), "/auth/twitter"
+    %li= link_to image_tag('soundcloud.png'), "/auth/soundcloud"
+    %li= link_to image_tag('google.png'), "/auth/google_oauth2"
+    -#%li= link_to image_tag('pinterest.png')
+    -#%li= link_to image_tag('google.png')
+    %li= "— or fill in the simple form below and atart selling in minutes"
+  = form_tag users_path do
+    = submit_tag ""
+    = text_field_tag :email, @email, {:placeholder => "Email"}
+    = password_field_tag :password, @password, {:placeholder => "Password"}
+    = hidden_field_tag :index_register, true
+.title_people= "People use DejiSute to sell all sorts of great things"
+
+%ul.sell
+  %li
+    = raw("<span>$+1</span>")
+    = image_tag('image-1.png')
+    .bottom= "Lorem ipsum..."
+  %li{:style => 'margin-left: 35px;'}
+    = raw("<span>$+1</span>")
+    = image_tag('image-1.png')
+    .bottom= "Lorem ipsum..."
+  %li{:style => 'float: right;'}
+    = raw("<span>$+1</span>")
+    = image_tag('image-1.png')
+    .bottom= "Lorem ipsum..."
+.cleaner

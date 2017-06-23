@@ -1,0 +1,19 @@
+<h2 class="sidebar-title">Purchase This Link!</h2>
+<p>
+  <div class="file-info">
+    <div class="extension">You'll get <em>a JPG</em></div>
+    <div class="f-info">SIZE<br><em>38.4kb</em></div>
+    <div class="f-info">RESOLUTION<br><em>512 x 364 px</em></div>
+  </div>
+</p>
+<p>
+  <form>
+    <script src="https://button.stripe.com/v1/button.js"
+	    class="stripe-button"
+	    data-key="#{STRIPE_PUBLISHABLE_KEY}"
+	    data-amount="#{@link.price}"
+	    data-address=""
+	    data-panel-label="Pay">
+    </script>
+  </form>
+</p>

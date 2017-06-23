@@ -1,0 +1,11 @@
+#article
+  = render :partial => 'users/right_sidebar'
+  .content
+    %section
+      %h1= "Customize"
+      %p
+        %span.input-title= "Custom CCS"
+        %textarea.textarea{:name => 'your-message', :cols => 40, :rows => 5}
+      %p
+        %input.submit-btn.settingsbtn{:type => 'submit', :value => "Customize"}
+  .cleaner

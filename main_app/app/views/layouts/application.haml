@@ -1,0 +1,23 @@
+!!!
+%html{ html_attrs('en') }
+  %head
+    %meta{ 'http-equiv' => 'Content-Type', :content => 'text/html; charset=utf-8' }
+    %title="Dejisute #{yield :site_title}"
+    = stylesheet_link_tag 'reset', 'master'
+    = javascript_include_tag :application
+
+    / [if IE]
+      = javascript_include_tag "html5"
+      = stylesheet_link_tag "ie/master"
+
+  %body
+    #wrapper
+      #container
+        = render :partial => 'shared/header_site'
+        #body
+          %article
+            = yield
+          .cleaner
+        %footer
+          = render :partial => 'shared/footer_site'
+

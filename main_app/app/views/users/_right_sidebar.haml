@@ -1,0 +1,8 @@
+#right_sidebar
+  %ul
+    %li{:class => @class_settings ? "current" : "no_class"}= link_to "Account Settings", settings_path
+    %li{:class => @class_buyer_information ? "current" : "no_class"}= link_to "Buyer Information", buyer_information_path
+    %li{:class => @class_purchases ? "current" : "no_class"}= link_to "Purchases", purchase_history_path
+    %li{:class => @class_password ? "current" : "no_class"}= link_to "Password", password_path
+    %li{:class => @class_connection ? "current" : "no_class"}= link_to "Connection", connection_path
+    %li{:class => @class_customize ? "current" : "no_class"}= link_to "Customize", customize_path

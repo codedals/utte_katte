@@ -1,0 +1,12 @@
+#article
+  = render :partial => 'users/right_sidebar'
+  .content
+    %section
+      %h1= "#{pluralize(@purchases.count, 'Purchase')}"
+      %ul.connections
+        %li
+          -@purchases.each do |purchase|
+            %span.c-status= link_to purchase.link_name, purchase_success_path(purchase.unique_download_key)
+            %span.c-action
+              ="$#{purchase.link_price}"
+  .cleaner

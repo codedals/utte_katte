@@ -1,0 +1,48 @@
+source 'https://rubygems.org'
+
+gem 'rails', '3.2.3'
+
+#Amazon S3 Uploads
+#gem 'aws-s3'
+gem 's3'
+
+gem 'redis'
+gem 'resque'
+
+gem 'mini_magick'
+#gem 'pdf-toolkit'
+gem 'docsplit'
+
+# Bundle edge Rails instead:
+# gem 'rails', :git => 'git://github.com/rails/rails.git'
+
+gem 'mysql2'
+#gem 'anybase'
+gem 'haml'
+
+#SN Auths
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'omniauth-soundcloud', '~> 1.0.0'
+gem 'omniauth-google-oauth2'
+
+gem 'twitter'
+gem 'fb_graph'
+
+#payment gateway
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+# Gems used only for assets and not required
+# in production environments by default.
+group :assets do
+  gem 'sass-rails',   '~> 3.2.3'
+  gem 'coffee-rails', '~> 3.2.1'
+  gem 'therubyracer'
+  gem  'execjs'
+  gem 'uglifier', '>= 1.0.3'
+end
+
+gem 'jquery-rails'
+
+# To use ActiveModel has_secure_password
+gem 'bcrypt-ruby', '~> 3.0.0'

@@ -1,0 +1,32 @@
+#article
+  .no_right_part
+    .list-products
+      .part_two
+        %input.green-btn-add{:type => 'submit', :value => "Add"}
+        %input.input_pr.size7{:size => 7, :placeholder => "Name"}
+        %input.input_pr.ml10.size12{:id => "file_field", :type => 'text', :size => 12, :placeholder => "http://"}
+        %span.img_download
+        %input.img_pay_input
+      .part_one
+        .count_products= "#{@links.count} Links"
+      .cleaner
+      .mt10
+
+      -@links.each do |link|
+        .one_product
+          .part_two
+            .part_content.next
+              .price= "$#{link.price}"
+              = '0 views'
+              = image_tag('next.png', :style => 'margin: 0 5px;')
+              = '0 sales'
+              = image_tag('next.png', :style => 'margin: 0 5px;')
+              = '$0 total'
+              = link_to link.display_link, link_display_path(link.identity_key)
+
+          .part_one
+            .part_content
+              %h3= link.name
+          .cleaner
+
+  .cleaner

@@ -1,0 +1,31 @@
+<h2 class="sidebar-title">Purchase This Link!</h2>
+<p>
+  <div class="file-info">
+    <div class="extension">You'll get <em>a <%= @link.get_ext_name.upcase %></em></div>
+    <div class="f-info">SIZE<br><em><%= @link.display_file_size %>kb</em></div>
+    <!-- handle non images, also this call is pretty silly -->
+    <% if @link.get_ext_type == :image && !@link.resolution[:width].nil? %>
+    <div class="f-info">RESOLUTION<br><em><%= @link.resolution[:width] %> x <%= @link.resolution[:height] %>px</em></div>
+    <% end %>
+  </div>
+</p>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<%= form_tag purchases_path :method => :post do %> 
+  <input type="hidden" name="identity_key" value="<%= @link.identity_key %>">
+  <script src="https://button.stripe.com/v1/button.js"
+	  class="stripe-button"
+	  data-key="<%= STRIPE_PUBLISHABLE_KEY %>"
+	  data-amount="<%= @link.price * 100 %>"
+	  data-panel-label="Pay">
+  </script>
+<% end %>
+</form>
+

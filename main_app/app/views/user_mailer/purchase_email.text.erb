@@ -1,0 +1,8 @@
+Hello:
+
+This is your receipt for the purchase of <%= @purchase.link.name %>.
+
+You paid <%= @purchase.link.price %>.
+
+Go <%= link_to "here", "http://dejisute.com/p/#{@purchase.unique_download_key}" %> to download!
+

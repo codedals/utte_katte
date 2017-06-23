@@ -1,0 +1,9 @@
+<h2>My Links:</h2><br/>
+<% @links.each do |link| %>
+<%= link_to link.display_link, link.display_link %> -- <%= link.name %>
+	<br/>
+<% end %>
+<br/>
+<%= link_to "Add a Link!", new_link_path %>
+
+

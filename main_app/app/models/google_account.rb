@@ -1,0 +1,3 @@
+class GoogleAccount < LinkedAccount
+
+end

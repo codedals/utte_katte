@@ -1,0 +1,47 @@
+#article
+  -if notice
+    %center
+      %p.notice.error
+        -notice.each do |err|
+          =err
+          %br
+  = render :partial => 'users/right_sidebar'
+  .content
+    =form_tag profiles_path, :method => :put do
+      %section
+        %h1= "Account Settings"
+        %p
+          %span.input-title-ac= "Profile picture"
+          %span.avatar-upload= image_tag('i/avatar.png')
+          %input.green-btn{:type => 'submit', :value => "Upload"}
+        %p
+          %span.input-title-ac= "Full Name"
+          %input.input-ac{:name => 'profile_fullname', :type => 'text', :value => "#{@profile.fullname}", :size => 40}
+        %p
+          %span.input-title-ac= "Bio"
+          %textarea.textarea-ac{:name => 'profile_bio', :cols => 40, :rows => 5}
+            =@profile.bio
+          %em.em= "Tell your followers a little bit about who you are!"
+        %p
+          %span.input-title-ac= "UserName"
+          %input.input-ac{:name => 'profile_username', :type => 'text', :value => "#{@profile.username}", :size => 40}
+        %hr.my_hr
+        %p
+          %span.input-title-ac= "Email"
+          %input.input-ac{:name => 'user_email', :type => 'text', :value => "#{@profile.user.email}", :size => 40}
+          %em.em
+            %input{:type => "checkbox", :name => "notification", :value => "Email", :style => "margin: 0 10px 0 0;"}
+            = "Receive email notifications for each purchase."
+        -# %p
+        -#   %span.input-title-ac= "PayPal Email"
+        -#   %input.input-ac{:name => 'pay_pal_email', :type => 'text', :value => "", :size => 40}
+        -#   %em.em= "We'll deposit money into this account at the end of the month."
+        -# %hr.my_hr
+        -# %p
+        -#   %span.input-title-ac= "Sell links in"
+        -#   %select.selector{:style => "margin-top: 35px;"}
+        -#     %option= "$ (US Dollar)"
+        -#     %option= "Euro"
+        %p
+          %input.submit-btn.settingsbtn{:type => 'submit', :value => "Update Account", :style => 'margin-top: 10px;'}
+  .cleaner

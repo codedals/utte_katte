@@ -1,0 +1,20 @@
+%h2.sidebar-title= "Purchase This Link!"
+%p
+  .file-info
+    .extension= raw("You'll get <em>a JPG</em>")
+    .f-info= raw("SIZE<br><em>38.4kb</em>")
+    .f-info= raw("RESOLUTION<br><em>512 x 364 px</em>")
+%p
+  %br
+  %form  
+    <script src="https://button.stripe.com/v1/button.js"
+    class="stripe-button"
+    data-key="#{STRIPE_PUBLISHABLE_KEY}"
+    data-amount="#{@link.price}"
+    data-address=""
+    data-panel-label="Pay"></script>
+
+    
+-# %input.submit-btn.settingsbtn{:type => "submit", :value => 'Buy!', :style => 'margin: 30px 0 0 0;'}
+
+  

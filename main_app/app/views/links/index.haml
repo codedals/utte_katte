@@ -1,0 +1,53 @@
+#article
+  -if notice
+    %center
+      %p.notice.error
+        -notice.each do |err|
+          =err
+          %br
+  .no_right_part
+    .list-products
+      .part_two
+        =form_tag links_path, :name => "local_file", :id => "local_file", :multipart => "true", :method => :post do  
+          %input.green-btn-add{:type => 'submit', :value => "Add"}
+          %input.input_pr.size7{:size => 7, :name => "link_name", :placeholder => "Name"}
+          %input.input_pr.ml10.size12{:name => "link_remote_file", :type => 'text', :size => 12, :placeholder => "http://", :set => "false"}
+          %div.img_download
+          %input.img_pay_input{:type => "text", :name => "link_price"}
+          .part_one
+            %input{:type => "file", :name => "link_local_file"}
+      .count_products= "#{pluralize(@links.count, 'Link')}"
+      .balance= "Balance: $#{current_user.display_balance}"
+      .cleaner
+      .mt10
+      -if @current_user.verified_email == false 
+        %p
+          Welcome! Please check your email to verify your address. A verified account is necessary to receive payments!
+          If you can't find our email, we can resend it!
+          %center
+            =button_to "Resend", resend_verification_email_users_path, :class => "green_but_forgot"
+
+      -@links.each do |link|
+        .one_product
+          .part_two
+            .part_content.next
+              .price= "$#{link.price}"
+              = "#{link.views.to_i} Views"
+              = image_tag('next.png', :style => 'margin: 0 5px;')
+              = "#{pluralize(link.purchase_count, 'sale')}"
+              = image_tag('next.png', :style => 'margin: 0 5px;')
+              = "$#{link.total_sales} total"
+              = link_to "View", link_display_path(link.identity_key)
+
+          .part_one
+            .part_content
+              -if link.active == true
+                %h3
+                  = link_to "#{link.name} (Edit)", edit_link_path(link)
+              -else               
+                %h3.inactive
+                  = link_to link.name, edit_link_path(link)
+                  (not active)
+          .cleaner
+
+  .cleaner

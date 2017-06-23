@@ -1,0 +1,19 @@
+#article
+  .primary1
+    .primary-menu
+      -if @link.get_ext_type == :audio
+        .imagebg= image_tag("audio_preview.png")
+      -else      
+        .imagebg= image_tag("/data/preview/#{@link.preview_file_path}")
+      %p
+        %b PREVIEW
+      %p
+        %input.title-f{:type => :text, :value => @link.name, :name => 'your-name', :size => 40, :readonly => "readonly", :onfocus => "blur()"}
+        %input.price-f{:type => :text, :value => @link.price.to_i, :name => 'your-name', :size => 40, :readonly => "readonly", :onfocus => "blur()"}
+      %p
+        %textarea.textarea-f{:cols => 40, :rows => 5, :readonly => "readonly", :onfocus => "blur()"}
+          =@link.description
+    .cleaner
+  .secondary
+    = render :partial => 'links/display_right_sidebar'
+  .cleaner

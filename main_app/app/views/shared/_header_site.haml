@@ -1,0 +1,41 @@
+%header
+  .header
+    .logo= link_to image_tag('logo.png'), root_path
+    .llblock
+      .lang= img_lang_links
+      .cleaner
+      %ul
+        - unless logged_in?
+          %li.log_in
+            = link_to "Login", "#", {:class => "login", :id => 'show-login-form-link','data-default' => 'Login', 'data-close' => 'Close'}
+            = form_tag sessions_path, :id => 'login-form', :novalidate => :novalidate do
+              = text_field_tag :login, @login, {:placeholder => 'Login', :onfocus => "if (this.value == 'Login') {this.value = '';}", :onblur => "if (this.value == '') {this.value = 'Login';}"}
+              = password_field_tag :password, @password, {:placeholder => 'Password', :onfocus => "if (this.value == 'Password') {this.value = '';}", :onblur => "if (this.value == '') {this.value = 'Password';}"}
+              %small#social-login-options
+                = link_to image_tag('login_with_facebook_button.png', :width => 28, :height => 28, :class => 'social_button'), "/auth/facebook"
+                = link_to image_tag('login_with_twitter_button.png', :width => 28, :height => 28, :class => 'social_button') , "/auth/twitter"
+                = link_to image_tag('login_with_soundcloud_button.png', :width => 28, :height => 28, :class => 'social_button'), "/auth/soundcloud"
+                = link_to image_tag('login_with_google_button.png', :width => 28, :height => 28, :class => 'social_button'), "/auth/google_oauth2"
+              %button.button{:type => 'submit', 'data-default' => 'Login', 'data-loading' => 'Logging in...'}= "Login"
+              %p.forgot.soft-hidden
+                = link_to 'Forgot your password?'
+          %li{:style => 'float:left; margin-top:20px;'}
+            = image_tag('lock.png', :valign => 'middle', :class => 'lock')
+            = link_to 'Have an acount?'
+        - else
+          %li{:style => 'margin-right:10px;'}
+            = image_tag('lock.png', :valign => 'middle', :class => 'lock')
+            = link_to 'My Account', settings_path
+          %li.log_in= link_to "Logout", logout_path, {:class => "login"}
+
+    - unless logged_in?
+      %ul#site_menu
+        %li= link_to "", root_path, {:class => "home #{@class_home ? 'current' : ''}"}
+        %li= link_to "", how_it_works_path, {:class => "how-it-works #{@class_how_it_works ? 'current' : ''}"}
+        %li= link_to "", about_path, {:class => "about #{@class_about ? 'current' : ''}"}
+        %li= link_to "", faq_path, {:class => "faq #{@class_faq ? 'current' : ''}"}
+    - else
+      .user-options
+        = link_to "Links", links_path, :class => 'option-btn left-r'
+        = link_to "Settings", settings_path, :class => 'option-btn right-r'
+.cleaner

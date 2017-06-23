@@ -1,0 +1,14 @@
+#article
+  .primary1
+    .primary-menu    
+      .imagebg= image_tag("/data/#{@link.upload_path}")
+      %p
+        %input.title-f{:type => :text, :value => @link.name, :name => 'your-name', :size => 40, :readonly => "readonly", :onfocus => "blur()"}
+        %input.price-f{:type => :text, :value => '250', :name => 'your-name', :size => 40, :readonly => "readonly", :onfocus => "blur()"}
+      %p
+        %textarea.textarea-f{:cols => 40, :rows => 5, :readonly => "readonly", :onfocus => "blur()"}
+          Stuff
+    .cleaner
+  .secondary
+    = render :partial => 'links/display_right_sidebar'
+  .cleaner

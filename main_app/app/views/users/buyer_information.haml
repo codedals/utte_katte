@@ -1,0 +1,38 @@
+#article
+  = render :partial => 'users/right_sidebar'
+  .content
+    %section
+      %h1= "Buyer Information"
+      %p
+        .payment-info
+          = image_tag('i/payment.png')
+          %h4{:style => 'padding: 10px 20px 10px 20px; float: left; color: #ffffff; font-size: 14px;'}= "Card Number"
+          %input.secure.payment-input{:size => 40, :name => "your_name", :type => :text}
+          %p
+            %h4{:style => 'padding: 10px 20px 10px 20px; float: left; color: #ffffff; font-size: 14px;'}= "Expiry Date"
+            %h4{:style => 'padding: 10px 20px 10px 20px; float: right; color: #ffffff; font-size: 14px;'}= "CV Code"
+          %p
+            %input.payment-date{:size => 40, :value => 'MM', :name => "your_name", :type => :text}
+            %input.payment-date{:size => 40, :value => 'DD', :name => "your_name", :type => :text}
+            %input.payment-date{:style => "float: right; margin-right: 20px;",:size => 40, :value => '112', :name => "your_name", :type => :text}
+        %input.submit-btn.settingsbtn{:value => 'Save credit card', :type => :submit, :style => 'margin-left: 30px;'}
+      .cleaner
+      %br
+      %hr
+      %p
+        .payment-info
+          = image_tag('i/payment.png')
+          %h4{:style => 'padding: 10px 20px 10px 20px; float: left; color: #ffffff; font-size: 14px;'}= "Card Number"
+          %input.secure.payment-input{:value => 'Street adress',:size => 40, :name => "your_name", :type => :text}
+          %p
+            %input.payment-city{:size => 40, :value => 'City', :name => "your_name", :type => :text}
+            %input.payment-state{:size => 40, :value => 'State', :name => "your_name", :type => :text}
+            %input.payment-zip{:style => "float: right; margin-right: 20px;",:size => 40, :value => 'ZIP code', :name => "your_name", :type => :text}
+          %p
+            %select.payment-selector
+              %option= "United States"
+              %option= "Canada"
+
+        %input.submit-btn.settingsbtn{:value => 'Save information', :type => :submit, :style => 'margin-left: 30px;'}
+      .cleaner
+  .cleaner

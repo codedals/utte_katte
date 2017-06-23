@@ -1,0 +1,8 @@
+WELCOME!
+======
+Click on this <%= link_to "link", "http://dejisute.com" + verify_email_path(@user.verification_key) %> to verify your email!
+======
+Or copy and paste the following into your url bar:
+
+<%= link_to "http://www.dejisute.com" + verify_email_path(@user.verification_key), "http://www.dejisute.com" + verify_email_path(@user.verification_key) %>
+

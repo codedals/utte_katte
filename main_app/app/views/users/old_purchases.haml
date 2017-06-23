@@ -1,0 +1,20 @@
+#article
+  .no_right_part
+    .list-products
+      .part_two
+      .count_products= "#{@purchases.count} Purchases"
+      .cleaner
+      .mt10
+      -@purchases.each do |purchase|
+        .one_product
+          .part_two
+            .part_content.next
+              .price= "$#{purchase.link.price}"
+          .part_one
+            .part_content
+              -if true
+                %h3
+                  =link_to purchase.link.name, purchase_success_path(purchase.unique_download_key)
+          .cleaner
+
+  .cleaner

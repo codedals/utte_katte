@@ -1,0 +1,17 @@
+<h3>Login</h3>
+
+<%= form_tag sessions_path do %>
+<fieldset>
+  <p>
+    <%= label_tag :login, 'Email', :class => 'required' %>
+    <%= text_field_tag 'login', @login, :size => 20 %>
+  </p>
+  <p>
+    <%= label_tag :password, 'Password', :class => 'required' %>
+    <%= password_field_tag 'password', @password, :size => 20 %>
+  </p>
+  <p>
+	  <%= submit_tag 'Log In', :class => 'button' %>
+	</p>
+</fieldset>	
+<% end %>

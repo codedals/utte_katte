@@ -1,0 +1,17 @@
+#footer
+  %ul.social
+    %li= link_to image_tag('mail.png')
+    %li= link_to image_tag('facebook.png')
+    %li= link_to image_tag('twitter.png')
+    %li= link_to image_tag('pinterest.png')
+    %li= link_to image_tag('google.png')
+
+  %ul.menu
+    %li= raw "#{link_to 'Home', root_path}∙"
+    %li= raw "#{link_to 'About', about_path}∙"
+    %li= raw "#{link_to 'Faq', faq_path}∙"
+    %li= raw "#{link_to 'Blog', blog_path}∙"
+    %li= raw "#{link_to 'Terms of Use', terms_of_use_path}∙"
+    %li= raw "#{link_to 'Privacy Policy', privacy_policy_path}∙"
+  .cleaner
+  %p= "© 2012 DejiSute"

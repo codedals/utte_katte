@@ -1,0 +1,36 @@
+#article
+  .primary1
+    .primary-menu
+      .receipt-bg
+        .receipt
+        .receipt2
+          %h1= "Congratulations"
+          %p= "The seller appreciates your support!"
+          .product-inf
+            .product-name= link_to "#{@link.name} -- (right click and save link as)", @purchase.purchase_download_link
+            .product-price= "$#{@link.price}"
+        .receipt3
+        .cleaner
+        %hr
+        -if !current_user
+          %center
+            You are not logged in! Enter an email address so we can send your receipt! 
+            =form_tag purchase_email_purchases_path, :method => :post do 
+              %input{:size => 50, :name => "user_email", :placeholder => "Your Email"}
+              %input{:type => "hidden", :name => "download_key", :value => "#{@purchase.unique_download_key}"}
+              %input{:class => "green_button_forgot", :type => 'submit', :value => "Send Receipt"}
+        -if notice
+          %center 
+            %p.notice.error
+              =notice
+        .file-info
+          .extension= raw("You got <em>a #{@link.get_ext_name.upcase}</em>")
+          .f-info= raw("SIZE<br><em>#{@link.display_file_size}kb</em>")
+          -if @link.get_ext_type ==:image && !@link.resolution[:width].nil?
+            .f-info= raw("RESOLUTION<br><em>#{@link.resolution[:width]} x #{@link.resolution[:height]} px</em>")
+          .cleaner
+          %br
+  .secondary
+    =# render :partial => 'links/right_sidebar'
+  .cleaner
+    

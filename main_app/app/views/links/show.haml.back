@@ -1,0 +1,25 @@
+#article
+  .primary1
+    .primary-menu
+      %ul
+        %li.current= link_to "Edit this link", view_img_path
+        %li= link_to "More options", options_path
+        %li= link_to "Buyer receipt", receipt_path
+      .imagebg= image_tag("/data/#{@link.upload_path}")
+      %p
+        %input.title-f{:type => :text, :value => @link.name, :name => 'your-name', :size => 40}
+        %input.price-f{:type => :text, :value => '250', :name => 'your-name', :size => 40}
+      %p
+        %textarea.textarea-f{:name => 'bio', :cols => 40, :rows => 5}
+      .file-info
+        .extension= raw("They'll get <em>a JPG</em>")
+        .f-info= raw("SIZE<br><em>38.4kb</em>")
+        .f-info= raw("REZOLUTION<br><em>512 x 364 px</em>")
+      .f-save
+        %input{:type => :checkbox, :value => 'Email'}
+        =  'Purchases enabled'
+      %input.submit-btn.settingsbtn{:type => "submit", :value => 'Save Changes', :style => 'margin: 30px 0 0 20px;'}
+    .cleaner
+  .secondary
+    = render :partial => 'links/right_sidebar'
+  .cleaner

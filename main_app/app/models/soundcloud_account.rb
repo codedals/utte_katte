@@ -1,0 +1,2 @@
+class SoundcloudAccount < LinkedAccount
+end

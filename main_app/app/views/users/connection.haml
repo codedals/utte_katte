@@ -1,0 +1,46 @@
+#article
+  -if notice
+    %center
+      %p.notice.error
+        -notice.each do |err|
+          =err
+          %br
+  = render :partial => 'users/right_sidebar'
+  .content
+    %section
+      %h1= "Connection"
+      %h3= "Complete your Dejisute profile by connecting to other social networks."
+      %ul.connections
+        %li
+          = image_tag('i/fb-s.png')
+          -if @has_facebook
+            %span.c-status= "Connected"
+            %span.c-action
+              = button_to "Unlink!", unlink_account_path("facebook"), :class => "green_but_forgot"
+          -else
+            %span.c-status= "Not Connected"
+            %span.c-action
+              = button_to "Link!", "/auth/facebook", :class => "green_but_forgot"
+        %li
+          = image_tag('i/tw-s.png')
+          -if @has_twitter
+            %span.c-status= "Connected"
+            %span.c-action
+              = button_to "Unlink!", unlink_account_path("twitter"), :class => "green_but_forgot"
+          -else
+            %span.c-status= "Not Connected"
+            %span.c-action
+              = button_to "Link!", "/auth/twitter", :class => "green_but_forgot"
+        %li
+          = image_tag('i/sc-s.png')
+          -if @has_soundcloud
+            %span.c-status= "Connected"
+            %span.c-action
+              = button_to "Unlink!", unlink_account_path("soundcloud"), :class => "green_but_forgot"
+          -else
+            %span.c-status= "Not Connected"
+            %span.c-action
+              = button_to "Link!", "/auth/soundcloud", :class => "green_but_forgot"
+
+            
+  .cleaner
