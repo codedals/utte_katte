@@ -11,7 +11,7 @@ rake db:migrate
 rails s
 ```
 
-##License
+## License
 
 Copyright (c) 2012 Mitchell A. Carroll
 
